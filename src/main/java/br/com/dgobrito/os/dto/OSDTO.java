@@ -8,6 +8,8 @@ import javax.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.dgobrito.os.domain.OS;
+import br.com.dgobrito.os.enums.Prioridade;
+import br.com.dgobrito.os.enums.Status;
 
 public class OSDTO implements Serializable {
 
@@ -25,9 +27,11 @@ public class OSDTO implements Serializable {
 	
 	@NotEmpty(message = "O campo OBSERVAÇÕES é requerido")
 	private String observacoes;
+	
 	private Integer status;
 		
 	private Integer tecnico;
+	
 	private Integer cliente;
 
 	public OSDTO() {
@@ -68,8 +72,8 @@ public class OSDTO implements Serializable {
 		this.dataFechamento = dataFechamento;
 	}
 
-	public Integer getPrioridade() {
-		return prioridade;
+	public Prioridade getPrioridade() {
+		return Prioridade.toEnum(prioridade);
 	}
 
 	public void setPrioridade(Integer prioridade) {
@@ -84,8 +88,8 @@ public class OSDTO implements Serializable {
 		this.observacoes = observacoes;
 	}
 
-	public Integer getStatus() {
-		return status;
+	public Status getStatus() {
+		return Status.toEnum(status);
 	}
 
 	public void setStatus(Integer status) {

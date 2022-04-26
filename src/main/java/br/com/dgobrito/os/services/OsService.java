@@ -13,7 +13,6 @@ import br.com.dgobrito.os.domain.Cliente;
 import br.com.dgobrito.os.domain.OS;
 import br.com.dgobrito.os.domain.Tecnico;
 import br.com.dgobrito.os.dto.OSDTO;
-import br.com.dgobrito.os.enums.Prioridade;
 import br.com.dgobrito.os.enums.Status;
 import br.com.dgobrito.os.exceptions.ObjectNotFoundException;
 import br.com.dgobrito.os.repositories.OSRepository;
@@ -54,8 +53,8 @@ public class OsService {
 		OS newObj = new OS();
 		newObj.setId(dto.getId());
 		newObj.setObservacoes(dto.getObservacoes());
-		newObj.setPrioridade(Prioridade.toEnum(dto.getPrioridade()));
-		newObj.setStatus(Status.toEnum(dto.getStatus()));
+		newObj.setPrioridade(dto.getPrioridade());
+		newObj.setStatus(dto.getStatus());
 		
 		Tecnico tec = tecnicoService.findById(dto.getTecnico());
 		Cliente cli = clienteService.findById(dto.getCliente());
